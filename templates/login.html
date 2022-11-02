@@ -1,0 +1,40 @@
+{% extends "header.html" %}
+
+{% block content %}
+
+<h1>Login ... </h1>
+  <body class="text-center" >
+
+<main class="form-signin">
+  <form action="{{ url_for('login') }}" method="post">
+    <!-- <img class="mb-4" src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
+    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+         <p class="error-message">{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+{% endwith %}
+    <div class="form-floating">
+      <input type="email" name="email" class="form-control top" id="floatingInput" placeholder="name@example.com">
+      <label for="floatingInput">Email address</label>
+    </div>
+
+
+
+<!--    <div class="form-floating">-->
+<!--        <input type="text" name="name" class="form-control middle" id="floatingInput" placeholder="Your Name">-->
+<!--        <label for="floatingInput">Name </label>-->
+<!--      </div>-->
+
+      <div class="form-floating">
+        <input type="password" name="password" class="form-control bottom" id="floatingPassword" placeholder="Your Password">
+        <label for="floatingInput">Password</label>
+      </div>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Log In</button>
+    <p class="mt-5 mb-3 text-muted">&copy; Rana (2022) </p>
+  </form>
+</main>
+  </body>
+{% endblock %}

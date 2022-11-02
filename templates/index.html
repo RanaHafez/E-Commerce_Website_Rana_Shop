@@ -1,0 +1,56 @@
+{% extends "header.html" %}
+
+{% block content %}
+
+
+<div class="container">
+  <div class="row justify-content-start">
+       {% for book in books %}
+      <div class="card col-2 item-cart-card " >
+        <form action="{{ url_for('add_cart', book=book['name']) }}" method="post">
+            <img src="{{ book['image'] }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h2>{{ book['name'] }}</h2>
+                <p class="card-text">{{ book['description'] }}</p>
+                <div class="quantity-container">
+                    <a id="plus" class="btn btn-outline-info book-{{ books.index(book) }}"> + </a> <input style="width: 30px;" class="book-{{ books.index(book) }}" id="quantity" name="quantity" value="1">  <a id="minus" class="btn btn-outline-info book-{{ books.index(book) }}"> - </a>
+
+                </div>
+                <button type="submit" class="btn btn-outline-info">🛒 Add to Cart</button>
+
+            </div>
+    </form>
+    </div>
+      {% endfor %}
+  </div>
+</div>
+
+<script>
+
+    const plus=document.querySelectorAll("#plus");
+    const minus =document.querySelectorAll("#minus");
+    const quantity = document.querySelectorAll("quantity");
+
+    plus.forEach(element => {
+       element.addEventListener('click', function () {
+          console.log("element plus Clicked ");
+          console.log(element.classList[2]);
+          const quantity = document.querySelector("input." + element.classList[2]);
+          console.log(quantity);
+          quantity.value =  parseInt(quantity.value) + 1;
+       });
+    });
+
+    minus.forEach(element => {
+       element.addEventListener('click', function () {
+          console.log("element plus Clicked ");
+          console.log(element.classList[2]);
+          const quantity = document.querySelector("input." + element.classList[2]);
+          console.log(quantity);
+          if (parseInt(quantity.value) > 1) {
+             quantity.value =  parseInt(quantity.value) - 1;
+          }
+       });
+    });
+</script>
+{% endblock %}

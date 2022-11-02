@@ -1,0 +1,9 @@
+{% extends "header.html" %}
+{% block content %}
+<div class="middle-container">
+  <img src="static/img/fail.gif" class="">
+  <h1>The Transaction has failed</h1>
+  <h2>Try Again</h2>
+  <a href="{{ url_for('get_cart') }}" class="btn btn-outline-info">🛒 Go to Cart</a>
+</div>
+{% endblock %}

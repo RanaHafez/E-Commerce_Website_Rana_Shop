@@ -1,0 +1,9 @@
+{% extends "header.html" %}
+{% block content %}
+<div class="middle-container">
+  <img src="static/img/success.gif" class="">
+  <h1>The Transaction was a Success.</h1>
+  <h2>Thanks For Shopping at Rana's Shop</h2>
+  <a href="{{ url_for('home') }}" class="btn btn-outline-info">Go to Main Page</a>
+</div>
+{% endblock %}
